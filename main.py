@@ -4,7 +4,7 @@ import math
 import random
 
 def mouse():
-    
+    pass   
 
 def main():
     rl.init_window(800, 600, "Raylib")
