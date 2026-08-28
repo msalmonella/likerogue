@@ -1,33 +1,18 @@
-import pyray as rl
-import player
-import math
-import random
-
-def mouse():
-    pass   
+import pyray as pr
 
 def main():
-    rl.init_window(800, 600, "Raylib")
-    rl.rl_set_line_width(3)
-    angle: float = 0.0
+    pr.init_window(800, 600, "My Pyray Window")
 
-    camera: rl.Camera3D = rl.Camera3D((0, 0.5, 0),
-                                      (1, 0.5, 1),
-                                      (0, 1, 0),
-                                      60)
-    map_size = 10
+    while not pr.window_should_close():
+        pr.begin_drawing()
+        pr.clear_background(pr.RAYWHITE)
 
-    while not rl.window_should_close():
-        angle += 0.001
-        camera.position.x = math.cos(angle) * 5
-        camera.position.z = math.sin(angle) * 5
+        pr.draw_text("Hello, Pyray!", 300, 280, 20, pr.BLACK)
 
-        rl.begin_drawing()
-        rl.clear_background(rl.SKYBLUE)
-        rl.begin_mode_3d(camera)
-        rl.draw_grid(map_size * 10, 0.2)
-        rl.draw_plane((0, 0.5, 0), (map_size * 2, map_size * 2), rl.WHITE)
-        rl.end_mode_3d()
-        rl.end_drawing()
+        pr.end_drawing()
 
-main()
+    pr.close_window()
+
+
+if __name__ == "__main__":
+    main()
