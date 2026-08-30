@@ -1,18 +1,35 @@
-import pyray as pr
+import pyray as rl
+import math
+
+class Player:
+    def __init__(self, position):
+        pass
 
 def main():
-    pr.init_window(800, 600, "My Pyray Window")
+    rl.init_window(1024, 768, "Raylib")
+    rl.rl_set_line_width(3)
+    rl.set_target_fps(60)
+    angle: float = 0.0
 
-    while not pr.window_should_close():
-        pr.begin_drawing()
-        pr.clear_background(pr.RAYWHITE)
+    camera: rl.Camera3D = rl.Camera3D((0, 0.5, 0),
+                                      (1, 0.5, 1),
+                                      (0, 1, 0),
+                                      60)
+    map_size = 10
 
-        pr.draw_text("Hello, Pyray!", 300, 280, 20, pr.BLACK)
+    while not rl.window_should_close():
+        angle += 0.001
+        camera.position.x = math.cos(angle) * 5
+        camera.position.z = math.sin(angle) * 5
 
-        pr.end_drawing()
-
-    pr.close_window()
-
+        rl.begin_drawing()
+        rl.clear_background(rl.SKYBLUE)
+        rl.draw_text(str(rl.get_mouse_x()), 10, 10, 100, rl.WHITE)
+        rl.begin_mode_3d(camera)
+        rl.draw_grid(map_size * 10, 0.2)
+        rl.draw_plane((0, 0.5, 0), (map_size * 2, map_size * 2), rl.WHITE)
+        rl.end_mode_3d()
+        rl.end_drawing()
 
 if __name__ == "__main__":
     main()
