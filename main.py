@@ -1,8 +1,8 @@
 import pyray as rl
 import math
-import Config
+from Config import parse_config
 
-cfg = Config.parse_config()
+cfg = parse_config()
 
 class Player:
     def __init__(self, position):

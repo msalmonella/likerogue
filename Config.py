@@ -1,4 +1,5 @@
-"""To read the config and properly return the values"""
+import pyray as rl
+
 def parse_config():
     config = {}
     section = None
@@ -19,15 +20,8 @@ def parse_config():
                 key = key.strip()
                 value = value.strip().strip('"')
 
-                config[section][key] = "rl.KeyboardKey.KEY_" + value
+                enum_value = getattr(rl.KeyboardKey, "KEY_" + value)
+                config[section][key] = enum_value
 
     return config
-
-
-config = parse_config()
-
-print(config["KEYBOARD"]["mv_forward"])
-print(config["KEYBOARD"]["mv_backwards"])
-print(config["KEYBOARD"]["mv_left"])
-print(config["KEYBOARD"]["mv_right"])
 
