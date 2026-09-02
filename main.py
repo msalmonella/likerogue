@@ -2,6 +2,8 @@ import pyray as rl
 import math
 import Config
 
+cfg = Config.parse_config()
+
 class Player:
     def __init__(self, position):
         pass
@@ -29,8 +31,9 @@ class Input:
         rl.update_camera_pro(camera, (0, 0, 0), rotation, 0.0)
 
     def KeyboardInput(self):
-        if rl.is_key_down(Config.config["KEYBOARD"]["mv_forward"]):
-            rl.draw_text("merhaba", 10, 10, 100, rl.WHITE)
+        if rl.is_key_down(cfg["KEYBOARD"]["mv_forward"]):
+            # rl.draw_text("merhaba", 10, 10, 100, rl.RED)
+            rl.clear_background(rl.RED)
 
 
 def main():
