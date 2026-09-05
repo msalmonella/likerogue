@@ -20,8 +20,13 @@ def parse_config():
                 key = key.strip()
                 value = value.strip().strip('"')
 
-                enum_value = getattr(rl.KeyboardKey, "KEY_" + value)
-                config[section][key] = enum_value
+                if (config[section] != "KeyboardInput" or "MouseInput"):
+                    config[section][key] = value
+                else:
+                    enum_value = getattr(rl.KeyboardKey, "KEY_" + value)
+                    config[section][key] = enum_value
 
     return config
+
+# print(parse_config())
 
