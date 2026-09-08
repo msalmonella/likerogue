@@ -7,6 +7,7 @@ cfg = parse_config()
 # getattr here
 # getattr here
 # getattr here
+
 class Input:
     camera: rl.Camera3D = rl.Camera3D()
     camera.position = rl.Vector3(1, 0.5, 0)
@@ -30,6 +31,6 @@ class Input:
         rl.update_camera_pro(camera, (0, 0, 0), rotation, 0.0)
 
     def KeyboardInput(self):
-        if rl.is_key_down(cfg["KEYBOARD"]["mv_forward"]):
+        if rl.is_key_down(getattr(rl.KeyboardKey, "KEY_" + cfg["KEYBOARD"]["mv_forward"])):
             # rl.draw_text("merhaba", 10, 10, 100, rl.RED)
             rl.clear_background(rl.RED)
