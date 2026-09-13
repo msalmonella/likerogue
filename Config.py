@@ -21,7 +21,5 @@ def parse_config():
                 value = value.strip().strip('"')
 
                 config[section][key] = value
-        # for i in config["KEYBOARD"]:
-        #     print("KEY_" + str(config["KEYBOARD"]))
 
     return config

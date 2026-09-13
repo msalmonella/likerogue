@@ -3,11 +3,6 @@ from Config import parse_config
 
 cfg = parse_config()
 
-# getattr here get the content from config parser and apply the getattr function here.
-# getattr here
-# getattr here
-# getattr here
-
 class Input:
     camera: rl.Camera3D = rl.Camera3D()
     camera.position = rl.Vector3(1, 0.5, 0)
@@ -32,5 +27,10 @@ class Input:
 
     def KeyboardInput(self):
         if rl.is_key_down(getattr(rl.KeyboardKey, "KEY_" + cfg["KEYBOARD"]["mv_forward"])):
-            # rl.draw_text("merhaba", 10, 10, 100, rl.RED)
             rl.clear_background(rl.RED)
+        if rl.is_key_down(getattr(rl.KeyboardKey, "KEY_" + cfg["KEYBOARD"]["mv_backwards"])):
+            rl.clear_background(rl.GREEN)
+        if rl.is_key_down(getattr(rl.KeyboardKey, "KEY_" + cfg["KEYBOARD"]["mv_left"])):
+            rl.clear_background(rl.BLUE)
+        if rl.is_key_down(getattr(rl.KeyboardKey, "KEY_" + cfg["KEYBOARD"]["mv_right"])):
+            rl.clear_background(rl.YELLOW)

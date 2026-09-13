@@ -3,10 +3,6 @@ from Config import parse_config
 
 cfg = parse_config()
 
-# getattr here
-# getattr here
-# getattr here
-# getattr here
 class Engine:
     def __init__(self):
         rl.init_window(int(cfg["ENGINE"]["res_width"]),
