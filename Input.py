@@ -1,18 +1,12 @@
 import pyray as rl
 from Config import parse_config
+from Camera import Camera
 import Engine
 
 cfg = parse_config()
+camera = Camera()
 
 class Input:
-    camera: rl.Camera3D = rl.Camera3D()
-    camera.position = rl.Vector3(1, 0.5, 0)
-    camera.target = rl.Vector3(1, 0.5, 1)
-    camera.up = rl.Vector3(0, 1, 0)
-    camera.fovy = 60.0
-    camera.projection = rl.CameraProjection.CAMERA_PERSPECTIVE
-    camera_mode = 1
-
     def __init__(self, engine):
         self.engine = engine
 
