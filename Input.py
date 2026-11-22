@@ -1,5 +1,6 @@
 import pyray as rl
 from Config import parse_config
+import Engine
 
 cfg = parse_config()
 
@@ -11,6 +12,9 @@ class Input:
     camera.fovy = 60.0
     camera.projection = rl.CameraProjection.CAMERA_PERSPECTIVE
     camera_mode = 1
+
+    def __init__(self, engine):
+        self.engine = engine
 
     def __call__(self, camera: rl.Camera3D):
         self.MouseInput(camera)
@@ -34,3 +38,5 @@ class Input:
             rl.clear_background(rl.BLUE)
         if rl.is_key_down(getattr(rl.KeyboardKey, "KEY_" + cfg["KEYBOARD"]["mv_right"])):
             rl.clear_background(rl.YELLOW)
+        if rl.is_key_pressed(getattr(rl.KeyboardKey, "KEY_" + cfg["KEYBOARD"]["cl_showstats"])):
+            self.engine.toggle_stats()
